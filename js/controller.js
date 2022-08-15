@@ -1,25 +1,44 @@
-// const toggleSwitch = document.querySelector(
-//   '.theme-switch input[type="checkbox"]'
-// );
-// const currentTheme = localStorage.getItem("theme");
+import * as model from "./model.js";
+import countriesView from "./views/countriesView.js";
 
-// if (currentTheme) {
-//   document.documentElement.setAttribute("data-theme", currentTheme);
+const changeTheme = function () {
+  const toggle = document.querySelector(".dark-mode");
+  const storedTheme =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  const textMode = document.querySelector(".mode");
+  textMode.textContent = storedTheme === "dark" ? "Light" : "Dark";
 
-//   if (currentTheme === "dark") {
-//     toggleSwitch.checked = true;
-//   }
-// }
+  if (storedTheme) {
+    document.documentElement.setAttribute("data-theme", storedTheme);
+  }
+  const switchTheme = function () {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    let targetTheme = "light";
+    textMode.textContent = "Dark";
 
-// function switchTheme(e) {
-//   if (e.target.checked) {
-//     document.documentElement.setAttribute("data-theme", "dark");
-//     localStorage.setItem("theme", "dark");
-//   } else {
-//     document.documentElement.setAttribute("data-theme", "light");
-//     localStorage.setItem("theme", "light");
-//   }
-// }
+    if (currentTheme === "light") {
+      targetTheme = "dark";
+      textMode.textContent = "Light";
+    }
 
-// toggleSwitch.addEventListener("change", switchTheme, false);
-alert("hello");
+    document.documentElement.setAttribute("data-theme", targetTheme);
+    localStorage.setItem("theme", targetTheme);
+  };
+
+  toggle.addEventListener("click", switchTheme);
+};
+
+const controlCountries = async function () {
+  await model.getCountries();
+  countriesView.render(model.state.countries);
+};
+
+const init = function () {
+  changeTheme();
+  controlCountries();
+};
+
+init();

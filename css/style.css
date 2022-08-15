@@ -17,7 +17,7 @@
 [data-theme="dark"] {
    --font-color: hsl(0, 0%, 100%);
    --bg-color: hsl(207, 26%, 17%);
-   --input-color: hsl(0, 0%, 52%);
+   --input-color: hsl(0, 0%, 100%);
    --bg-el: hsl(209, 23%, 22%);
 }
 
@@ -72,6 +72,7 @@ body {
 
 .main {
    max-width: 130rem;
+   padding: 0 2rem 4rem 2rem;
    margin: 0 auto;
 }
 
@@ -86,11 +87,11 @@ body {
    display: flex;
    align-items: center;
    justify-content: center;
-   gap: 1rem;
-   padding: 1rem 2rem;
    width: 40rem;
    background-color: var(--bg-el);
-   box-shadow: 0 0 .75px var(--font-color);
+   padding: 1rem 2rem;
+   gap: 1rem;
+   box-shadow: 0 0 1px var(--font-color);
 }
 
 
@@ -98,25 +99,32 @@ body {
    font-family: inherit;
    font-size: 1.4rem;
    color: var(--input-color);
+   background-color: var(--bg-el);
    border: none;
-   width: 90%;
-   transition: all .2s;
+   width: 100%;
+   transition: width .2s;
 }
 
 .search__input:focus {
    outline: none;
-   width: 100%;
    color: var(--input-color);
+}
+
+.search__input::placeholder {
+   color: inherit;
 }
 
 .search__button {
    border: none;
+   background-color: var(--bg-el);
    color: var(--input-color);
 }
 
 .form-control {
+   font-family: inherit;
    border: none;
    color: var(--font-color);
+   background-color: var(--bg-el);
    box-shadow: 0 0 1px var(--font-color);
    width: 16em;
    height: 4rem;
@@ -131,24 +139,37 @@ body {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
    grid-gap: 7rem;
+   justify-items: center;
 }
 
 .country {
    display: flex;
    flex-direction: column;
-   height: 32rem;
+   text-decoration: none;
+   min-height: 32rem;
+   max-width: 70rem;
    overflow: hidden;
    box-shadow: 0 0 1px var(--font-color);
+   background-color: var(--bg-el);
+   cursor: pointer;
+   transition: transform .2s;
+}
+
+.country:hover {
+   transform: translateY(-.5rem);
+   box-shadow: 0 0 1px var(--input-color);
 }
 
 .country__img {
-   width: 100%;
+   min-width: 28rem;
+   height: 15rem;
    object-fit: cover;
 }
 
 .country__data {
    display: flex;
    flex-direction: column;
+   color: var(--font-color);
    padding: 0 2rem 2rem 2rem;
    gap: .5rem;
 }
