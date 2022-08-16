@@ -186,6 +186,10 @@ body {
    font-size: 1.2rem;
 }
 
+.font-bold {
+   font-weight: 600;
+}
+
 .details {
    display: grid;
    grid-template-columns: 1fr 1fr;
@@ -256,4 +260,26 @@ body {
    font-weight: 600;
    color: var(--font-color);
    text-decoration: none;
+}
+
+.spinner {
+   margin: 5rem auto;
+   text-align: center;
+}
+
+.spinner svg {
+   height: 6rem;
+   width: 6rem;
+   fill: var(--font-color);
+   animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+   0% {
+      transform: rotate(0);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
 }

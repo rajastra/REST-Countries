@@ -17,10 +17,16 @@ class CountriesView extends View {
          <img src="${country.img}" alt="" class="country__img">
          <div class="country__data">
             <h2 class="country__name">${country.name}</h2>
-            <p class="country__row">Capital: ${country.capital}.</p>
-            <p class="country__row">Population: ${country.population}</p>
-            <p class="country__row">Region: ${country.region}</p>
-            <p class="country__row">Languages: ${country.languages.join(
+            <p class="country__row"><span class="font-bold">Capital:</span>  ${
+              country.capital
+            }.</p>
+            <p class="country__row"><span class="font-bold">Population:</span> ${
+              country.population
+            }</p>
+            <p class="country__row"><span class="font-bold">Region:</span> ${
+              country.region
+            }</p>
+            <p class="country__row"><span class="font-bold">Languages:</span> ${country.languages.join(
               ", "
             )}</p>
          </div>

@@ -37,37 +37,62 @@ const changeTheme = function () {
 };
 
 const controlCountry = async function () {
-  const capital = window.location.hash.slice(1);
-  if (!capital) return;
-  await model.getCountry(capital);
-  backButtonView.renderButton();
-  console.log(model.state.country);
-  contryView.render(model.state.country);
+  try {
+    const capital = window.location.hash.slice(1);
+    if (!capital) return;
+    contryView.renderSpinner();
+    backButtonView.renderButton();
+    await model.getCountry(capital);
+    contryView.render(model.state.country);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const controlCountries = async function () {
-  filterView.render(model.state);
-  await model.getCountries(model.state.region);
-  countriesView.render(model.state.countries);
+  try {
+    countriesView.renderSpinner();
+    filterView.render(model.state);
+    await model.getCountries(model.state.region);
+    countriesView.render(model.state.countries);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const controlFilter = async function () {
-  const filter = new FilterData();
-  model.changeRegion(filter.getRegion());
-  filterView.render(model.state);
-  await model.getCountries(filter.getRegion());
-  countriesView.render(model.state.countries);
+  try {
+    countriesView.renderSpinner();
+    const filter = new FilterData();
+    model.changeRegion(filter.getRegion());
+    filterView.render(model.state);
+    await model.getCountries(filter.getRegion());
+    countriesView.render(model.state.countries);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const controlBack = function () {
-  filterView.render(model.state);
   window.location.hash = "";
+  countriesView.renderSpinner();
+  filterView.render(model.state);
   countriesView.render(model.state.countries);
+};
+
+const controlSearch = async function () {
+  try {
+    const search = document.querySelector(".search").value;
+    await model.getCountry(search);
+    contryView.render(model.state.country);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const init = function () {
   changeTheme();
-  controlCountries();
+  window.addEventListener("load", controlCountries);
   const filter = new FilterData();
   filter.addHandlersFilter(controlFilter);
   countryView.addHandlerCountry(controlCountry);

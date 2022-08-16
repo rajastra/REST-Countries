@@ -1,8 +1,8 @@
 import View from "./View.js";
 
-class CountryView extends View {
+class SearchView extends View {
   _parentElement = document.querySelector(".countries");
-  //   _errorMessage = "We could not find that recipe. Please try another one!";
+  _errorMessage = "We could not find that Contry. Please try another one!";
   //   _message = ``;
 
   addHandlerCountry = (handler) => {
@@ -17,33 +17,27 @@ class CountryView extends View {
             <h2 class="details__title">${this._data.name}</h2>
             <div class="details__box">
                <div class="details__text-box">
-                  <p class="details__text"><span class="font-bold">Native Name: </span>  ${
-                    this._data.name
-                  }</p>
-                  <p class="details__text"><span class="font-bold">Population: </span>  ${
+                  <p class="details__text">Native Name : ${this._data.name}</p>
+                  <p class="details__text">Population : ${
                     this._data.population
                   }</p>
-                  <p class="details__text"><span class="font-bold">region: </span> ${
-                    this._data.region
-                  }</p>
-                  <p class="details__text"><span class="font-bold">Subregion: </span> ${
+                  <p class="details__text">region: ${this._data.region}</p>
+                  <p class="details__text">Subregion: ${
                     this._data.subregion
                   }</p>
-                  <p class="details__text"><span class="font-bold">capital: </span>${
-                    this._data.capital
-                  }</p>
+                  <p class="details__text">capital: ${this._data.capital}</p>
                </div>
                <div class="details__text-box">
-                  <p class="details__text"><span class="font-bold">Currencies: </span>${
+                  <p class="details__text">Currencies : ${
                     this._data.currencies
                   }</p>
-                  <p class="details__text"><span class="font-bold">Language: </span>${this._data.languages.join(
+                  <p class="details__text">Language: ${this._data.languages.join(
                     ", "
                   )}</p>
                </div>
             </div>
             <div class="border">
-               <p class="details__text"><span class="font-bold"> Border  countries :</span></p>
+               <p class="details__text">Border countries :</p>
                ${
                  this._data.borders
                    ? this._data.borders
@@ -63,4 +57,4 @@ class CountryView extends View {
   }
 }
 
-export default new CountryView();
+export default new SearchView();

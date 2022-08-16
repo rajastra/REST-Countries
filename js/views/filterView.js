@@ -4,7 +4,6 @@ class FilterView extends View {
   _parentElement = document.querySelector(".filter-box");
 
   _generateMarkup() {
-    console.log(this._data.region);
     return `
       <form action="#" class="search">
          <button type="submit" class="search__button">
