@@ -5,6 +5,7 @@ import { FilterData } from "./views/filterData.js";
 import contryView from "./views/countryView.js";
 import countryView from "./views/countryView.js";
 import backButtonView from "./views/backButtonView.js";
+import searchView from "./views/searchView.js";
 
 const changeTheme = function () {
   const toggle = document.querySelector(".dark-mode");
@@ -41,8 +42,8 @@ const controlCountry = async function () {
     const capital = window.location.hash.slice(1);
     if (!capital) return;
     contryView.renderSpinner();
-    backButtonView.renderButton();
     await model.getCountry(capital);
+    backButtonView.renderButton();
     contryView.render(model.state.country);
   } catch (error) {
     console.log(error);
@@ -82,21 +83,27 @@ const controlBack = function () {
 
 const controlSearch = async function () {
   try {
-    const search = document.querySelector(".search").value;
-    await model.getCountry(search);
-    contryView.render(model.state.country);
+    countriesView.renderSpinner();
+    const search = new searchView();
+    const query = search.getQuery();
+    console.log(query);
+    if (!query) return;
+    await model.getSearchResult(query);
+    countriesView.render(model.state.search.results);
   } catch (error) {
-    console.log(error);
+    countriesView.renderError("cannot find country");
   }
 };
 
 const init = function () {
   changeTheme();
-  window.addEventListener("load", controlCountries);
+  controlCountries();
   const filter = new FilterData();
   filter.addHandlersFilter(controlFilter);
   countryView.addHandlerCountry(controlCountry);
   backButtonView.addHandlerBack(controlBack);
+  const search = new searchView();
+  search.addHandlerSearch(controlSearch);
 };
 
 init();

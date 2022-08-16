@@ -4,7 +4,10 @@ import { getJSON } from "./helper.js";
 export const state = {
   country: {},
   countries: [],
-  countrySearch: "",
+  search: {
+    query: "",
+    results: [],
+  },
   regions: ["Africa", "Americas", "Asia", "Europe", "Oceania"],
   region: "Africa",
 };
@@ -58,4 +61,23 @@ export const getCountries = async (region = state.region) => {
 
 export const changeRegion = (region) => {
   state.region = region;
+};
+
+export const getSearchResult = async (query) => {
+  try {
+    const url = `${API_URL}/name/${query}`;
+    const [data] = await getJSON(url);
+    state.search.results = [
+      {
+        name: data.name.common,
+        img: data.flags.svg,
+        population: data.population,
+        region: data.region,
+        capital: data.capital,
+        languages: Object.values(data.languages),
+      },
+    ];
+  } catch (error) {
+    throw error;
+  }
 };

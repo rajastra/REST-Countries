@@ -5,7 +5,7 @@ class FilterView extends View {
 
   _generateMarkup() {
     return `
-      <form action="#" class="search">
+      <form class="search">
          <button type="submit" class="search__button">
             <i class="fa-solid fa-search"></i>
          </button>
