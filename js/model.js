@@ -5,18 +5,18 @@ export const state = {
   country: {},
   countries: [],
   countrySearch: "",
-  filteredCountries: [],
+  regions: ["Africa", "Americas", "Asia", "Europe", "Oceania"],
 };
 
-export const getCountries = async () => {
-  const data = await getJSON(API_URL);
+export const getCountries = async (region) => {
+  const data = await getJSON(`${API_URL}${region}`);
   state.countries = data.map((country) => {
     return {
       name: country.name.official,
-      img: country.flags.png,
+      img: country.flags.svg,
       population: country.population,
       region: country.region,
-      capital: country.capital[0],
+      capital: country.capital,
       languages: Object.values(country.languages),
     };
   });

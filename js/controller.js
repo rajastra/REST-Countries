@@ -1,5 +1,7 @@
 import * as model from "./model.js";
 import countriesView from "./views/countriesView.js";
+import filterView from "./views/filterView.js";
+import { FilterData } from "./views/filterData.js";
 
 const changeTheme = function () {
   const toggle = document.querySelector(".dark-mode");
@@ -32,13 +34,23 @@ const changeTheme = function () {
 };
 
 const controlCountries = async function () {
-  await model.getCountries();
+  filterView.render(model.state.regions);
+  const filter = new FilterData();
+  await model.getCountries(filter.getRegion());
+  countriesView.render(model.state.countries);
+};
+
+const controlFilter = async function () {
+  const filter = new FilterData();
+  await model.getCountries(filter.getRegion());
   countriesView.render(model.state.countries);
 };
 
 const init = function () {
   changeTheme();
   controlCountries();
+  const filter = new FilterData();
+  filter.addHandlersFilter(controlFilter);
 };
 
 init();
