@@ -185,3 +185,75 @@ body {
 .country__row {
    font-size: 1.2rem;
 }
+
+.details {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 10rem;
+}
+
+.details__img {
+   width: 100%;
+   min-height: 35rem;
+   object-fit: cover;
+}
+
+.details__info {
+   padding: 4rem 0;
+}
+
+.details__title {
+   font-size: 2.4rem;
+   font-weight: 800;
+   color: var(--font-color);
+}
+
+.details__box {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   padding: 4rem 0;
+}
+
+.details__text-box {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+}
+
+.details__text {
+   font-size: 1.2rem;
+   color: var(--font-color);
+}
+
+.border {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 1rem;
+}
+
+.border__country {
+   padding: .5rem;
+   background-color: var(--bg-el);
+   box-shadow: 0 0 1px var(--font-color);
+}
+
+.border__link {
+   font-size: 1.2rem;
+   color: var(--font-color);
+   text-decoration: none;
+}
+
+.back-button {
+   background-color: var(--bg-el);
+   box-shadow: 0 0 1px var(--font-color);
+   padding: 1rem 2rem;
+   cursor: pointer;
+}
+
+.back-button__link {
+   font-size: 1.6rem;
+   font-weight: 600;
+   color: var(--font-color);
+   text-decoration: none;
+}

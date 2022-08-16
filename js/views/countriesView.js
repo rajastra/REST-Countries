@@ -13,7 +13,7 @@ class CountriesView extends View {
 
   _getCountryMarkup(country) {
     return `
-         <a class="country" href="#id">
+         <a class="country" href="#${country.name}">
          <img src="${country.img}" alt="" class="country__img">
          <div class="country__data">
             <h2 class="country__name">${country.name}</h2>
