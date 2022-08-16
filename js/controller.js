@@ -53,7 +53,7 @@ const controlCountry = async function () {
 const controlCountries = async function () {
   try {
     countriesView.renderSpinner();
-    filterView.render(model.state);
+    filterView.removeHidden();
     await model.getCountries(model.state.region);
     countriesView.render(model.state.countries);
   } catch (error) {
@@ -66,7 +66,7 @@ const controlFilter = async function () {
     countriesView.renderSpinner();
     const filter = new FilterData();
     model.changeRegion(filter.getRegion());
-    filterView.render(model.state);
+    filterView.removeHidden();
     await model.getCountries(filter.getRegion());
     countriesView.render(model.state.countries);
   } catch (error) {
@@ -77,7 +77,7 @@ const controlFilter = async function () {
 const controlBack = function () {
   window.location.hash = "";
   countriesView.renderSpinner();
-  filterView.render(model.state);
+  filterView.removeHidden();
   countriesView.render(model.state.countries);
 };
 

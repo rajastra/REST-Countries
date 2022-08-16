@@ -156,13 +156,13 @@ body {
 }
 
 .country:hover {
-   transform: translateY(-.5rem);
+   transform: translateY(-.5remgit);
    box-shadow: 0 0 1px var(--input-color);
 }
 
 .country__img {
-   min-width: 28rem;
-   height: 15rem;
+   width: 30rem;
+   height: 20rem;
    object-fit: cover;
 }
 
@@ -197,8 +197,8 @@ body {
 }
 
 .details__img {
-   width: 100%;
-   min-height: 35rem;
+   width: 60rem;
+   height: 35rem;
    object-fit: cover;
 }
 
@@ -306,4 +306,16 @@ body {
    font-size: 1.8rem;
    line-height: 1.5;
    font-weight: 600;
+}
+
+.back-box {
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   padding: 4rem 0;
+}
+
+.hidden {
+   display: none;
+   padding: 0;
 }
