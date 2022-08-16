@@ -46,19 +46,21 @@ const controlCountry = async function () {
 };
 
 const controlCountries = async function () {
-  filterView.render(model.state.regions);
+  filterView.render(model.state);
   await model.getCountries(model.state.region);
   countriesView.render(model.state.countries);
 };
 
 const controlFilter = async function () {
   const filter = new FilterData();
+  model.changeRegion(filter.getRegion());
+  filterView.render(model.state);
   await model.getCountries(filter.getRegion());
   countriesView.render(model.state.countries);
 };
 
 const controlBack = function () {
-  filterView.render(model.state.regions);
+  filterView.render(model.state);
   window.location.hash = "";
   countriesView.render(model.state.countries);
 };

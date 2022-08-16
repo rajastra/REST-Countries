@@ -6,6 +6,8 @@ export class FilterData extends View {
   addHandlersFilter(handler) {
     this._parentElement.addEventListener("change", function (event) {
       const target = event.target.value;
+      const options = document.querySelector(".form-control");
+      options.value = target;
       if (!target) return;
       handler();
     });

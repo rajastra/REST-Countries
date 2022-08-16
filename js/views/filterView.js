@@ -4,6 +4,7 @@ class FilterView extends View {
   _parentElement = document.querySelector(".filter-box");
 
   _generateMarkup() {
+    console.log(this._data.region);
     return `
       <form action="#" class="search">
          <button type="submit" class="search__button">
@@ -13,9 +14,11 @@ class FilterView extends View {
       </form>
       <!-- create select filter -->
       <select id="filter" class="form-control">
-      ${this._data
+      ${this._data.regions
         .map((region) => {
-          return `<option value="${region}">${region}</option>`;
+          return `<option value="${region}" ${
+            this._data.region === region ? "selected" : ""
+          }>${region}</option>`;
         })
         .join("")}
       </select>

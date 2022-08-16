@@ -47,3 +47,7 @@ export const getCountries = async (region = state.region) => {
     };
   });
 };
+
+export const changeRegion = (region) => {
+  state.region = region;
+};
