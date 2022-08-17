@@ -11,11 +11,11 @@ class searchView {
     this._parentElment.querySelector(".search__input").value = "";
   }
   addHandlerSearch(handler) {
-    this._parentElment.addEventListener("change", function (e) {
+    this._parentElment.addEventListener("submit", function (e) {
       e.preventDefault();
       handler();
     });
   }
 }
 
-export default searchView;
+export default new searchView();

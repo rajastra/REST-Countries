@@ -84,9 +84,9 @@ const controlBack = function () {
 const controlSearch = async function () {
   try {
     countriesView.renderSpinner();
-    const search = new searchView();
-    const query = search.getQuery();
+    const query = searchView.getQuery();
     console.log(query);
+    debugger;
     if (!query) return;
     await model.getSearchResult(query);
     countriesView.render(model.state.search.results);
@@ -97,13 +97,12 @@ const controlSearch = async function () {
 
 const init = function () {
   changeTheme();
-  controlCountries();
+  window.addEventListener("load", controlCountries);
   const filter = new FilterData();
   filter.addHandlersFilter(controlFilter);
   countryView.addHandlerCountry(controlCountry);
   backButtonView.addHandlerBack(controlBack);
-  const search = new searchView();
-  search.addHandlerSearch(controlSearch);
+  searchView.addHandlerSearch(controlSearch);
 };
 
 init();

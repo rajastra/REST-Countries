@@ -77,6 +77,7 @@ export const getSearchResult = async (query) => {
         languages: Object.values(data.languages),
       },
     ];
+    console.log(state.search.results);
   } catch (error) {
     throw error;
   }
