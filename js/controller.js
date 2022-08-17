@@ -86,7 +86,6 @@ const controlSearch = async function () {
     countriesView.renderSpinner();
     const query = searchView.getQuery();
     console.log(query);
-    debugger;
     if (!query) return;
     await model.getSearchResult(query);
     countriesView.render(model.state.search.results);
