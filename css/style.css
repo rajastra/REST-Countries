@@ -156,7 +156,7 @@ body {
 }
 
 .country:hover {
-   transform: translateY(-.5remgit);
+   transform: translateY(-.5rem);
    box-shadow: 0 0 1px var(--input-color);
 }
 
