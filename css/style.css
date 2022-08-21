@@ -270,6 +270,44 @@ body {
    color: var(--font-color);
 }
 
+.mb-2 {
+   margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 68.75em) {
+   .details {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+   }
+
+   .details__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
+   .details__box {
+      grid-template-columns: 1fr;
+   }
+
+   .details__text-box {
+      margin-bottom: 4rem;
+   }
+}
+
+@media only screen and (max-width: 32.5em) {
+   .details {
+      grid-template-columns: 1fr;
+      padding: 0 4rem;
+      width: 100%;
+   }
+
+   .details {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+   }
+}
+
 .border {
    display: flex;
    flex-wrap: wrap;

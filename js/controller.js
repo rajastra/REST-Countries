@@ -97,6 +97,7 @@ const controlSearch = async function () {
 const init = function () {
   changeTheme();
   window.addEventListener("load", controlCountries);
+  history.replaceState({}, "some title", "/");
   const filter = new FilterData();
   filter.addHandlersFilter(controlFilter);
   countryView.addHandlerCountry(controlCountry);
