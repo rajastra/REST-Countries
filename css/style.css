@@ -32,6 +32,12 @@ html {
    box-sizing: border-box;
 }
 
+@media only screen and (max-width: 50em) {
+   html {
+      font-size: 50%;
+   }
+}
+
 body {
    font-family: 'Nunito Sans', sans-serif;
    color: var(--font-color);
@@ -48,6 +54,16 @@ body {
    background-color: var(--bg-el);
    box-shadow: 0px 2px 1px -2px var(--font-color);
 }
+
+@media only screen and (max-width: 25em) {
+   .header {
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 2rem;
+   }
+}
+
 
 .header__title {
    font-size: 2.4rem;
@@ -81,6 +97,16 @@ body {
    align-items: center;
    justify-content: space-between;
    padding: 4rem 0;
+}
+
+@media only screen and (max-width: 50em) {
+   .filter-box {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 4rem;
+
+   }
 }
 
 .search {
@@ -120,6 +146,13 @@ body {
    color: var(--input-color);
 }
 
+@media only screen and (max-width: 50em) {
+   .search {
+      width: 100%;
+   }
+}
+
+
 .form-control {
    font-family: inherit;
    border: none;
@@ -129,6 +162,14 @@ body {
    width: 16em;
    height: 4rem;
    padding: 0 4em 0 1em;
+}
+
+@media only screen and (max-width: 50em) {
+   .form-control {
+      width: 100%;
+      height: 3.5rem;
+      padding: 0 4em 0 1em;
+   }
 }
 
 .form-control:focus {
